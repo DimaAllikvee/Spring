@@ -1,15 +1,14 @@
 package ee.spring.materials;
 
+
 import ee.spring.materials.models.Product;
-import org.springframework.web.bind.ServletRequestBindingException;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
-import java.util.Optional;
+
 
 @RestController
 public class ProductListController {
@@ -17,7 +16,7 @@ public class ProductListController {
     private List<Product> products = new ArrayList<>();
 
     public ProductListController() {
-        products.add(new Product(123, "Cola", 12.3, true));
+        products.add(new Product(123, "Cola", 18.3, true));
         products.add(new Product(124, "Fanta", 13.3, true));
         products.add(new Product(125, "Sprite", 14.3, true));
     }
@@ -45,6 +44,7 @@ public class ProductListController {
         products.add(new Product(id, name, price, active));
         return products;
     }
+
 
     @GetMapping("highest-price-product")
     public Product getHighestPriceProduct() {
