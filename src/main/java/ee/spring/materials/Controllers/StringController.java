@@ -1,4 +1,4 @@
-package ee.spring.materials;
+package ee.spring.materials.Controllers;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

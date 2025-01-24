@@ -1,4 +1,4 @@
-package ee.spring.materials;
+package ee.spring.materials.Controllers;
 
 import ee.spring.materials.models.Product;
 import org.springframework.web.bind.annotation.CrossOrigin;

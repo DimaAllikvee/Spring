@@ -1,16 +1,9 @@
-package ee.spring.materials;
-
+package ee.spring.materials.Controllers;
 
 import ee.spring.materials.models.Product;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
-
-
 
 @CrossOrigin("http://localhost:3000")
 @RestController
@@ -24,30 +17,24 @@ public class ProductListController {
         products.add(new Product(3, "Sprite", 14.3, true));
     }
 
-
     @GetMapping("products")
     public List<Product> getAllProducts() {
         return products;
     }
 
-
-    @GetMapping("remove-product/{index}")
+    @DeleteMapping("remove-product/{index}")
     public List<Product> removeProduct(@PathVariable int index) {
-        products.remove(index);
+        if (index >= 0 && index < products.size()) {
+            products.remove(index);
+        }
         return products;
     }
 
-    @GetMapping("add-product/{id}/{name}/{price}/{active}")
-    public List<Product> addProduct(
-            @PathVariable int id,
-            @PathVariable String name,
-            @PathVariable double price,
-            @PathVariable boolean active
-    ) {
-        products.add(new Product(id, name, price, active));
+    @PostMapping("add-product")
+    public List<Product> addProduct(@RequestBody Product product) {
+        products.add(product);
         return products;
     }
-
 
     @GetMapping("highest-price-product")
     public Product getHighestPriceProduct() {
@@ -58,11 +45,5 @@ public class ProductListController {
             }
         }
         return highestPriceProduct;
-
-
-
+    }
 }
-
-}
-
-
